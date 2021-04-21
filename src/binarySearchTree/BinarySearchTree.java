@@ -33,14 +33,33 @@ public class BinarySearchTree {
 		}
 	}
 	
-	public void depthfirst( Node<Integer> root) {
+	public void depthfirstpreorder( Node<Integer> root) {
 		if(root == null) {
 			return;
 		}
 		print(root);
-		depthfirst(root.getLeftChild());
-		depthfirst(root.getRightChild());
+		depthfirstpreorder(root.getLeftChild());
+		depthfirstpreorder(root.getRightChild());
 		
+	}
+	
+	public void depthFirstInOrder(Node<Integer> root) {
+		if(root == null) {
+			return;
+		}
+		
+		depthFirstInOrder(root.getLeftChild());
+		print(root);
+		depthfirstpreorder(root.getRightChild());
+	}
+	
+	public void depthFirstPostOrder(Node<Integer> root) {
+		if(root == null) {
+			return;
+		}
+		depthFirstPostOrder(root.getLeftChild());
+		depthFirstPostOrder(root.getRightChild());
+		print(root);
 	}
 	
 	public void print(Node<Integer> node) {
@@ -68,11 +87,17 @@ public class BinarySearchTree {
 		System.out.println("Node inserted in BST :: "+(bst.insert(head, node7)).getData());
 		System.out.println("Node inserted in BST :: "+(bst.insert(head, node8)).getData());
 		
-		System.out.println(" Searched node :: 11 ::"+(bst.lookUp(head, 11)).getData());
+		System.out.println(" Searched node :: 11 ::"+(bst.lookUp(head, 11)));
 		System.out.println(" Searched node :: 20 ::"+(bst.lookUp(head, 20)));
 		
 		System.out.println("Depth pre order algo");
-		bst.depthfirst(head);
+		bst.depthfirstpreorder(head);
+		
+		System.out.println("Depth Inorder order algo");
+		bst.depthFirstInOrder(head);
+		
+		System.out.println("Depth Post Order algo");
+		bst.depthFirstPostOrder(head);
 
 	}
 
