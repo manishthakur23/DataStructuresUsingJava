@@ -12,6 +12,7 @@ public class MinimumHeap<T extends Comparable> extends Heap<T>{
 		super(clazz, size);
 	}
 	
+	
 	protected void siftDown(int index) {
 		int leftChidIndex = getLeftChildIndex(index);
 		int rightChildIndex = getRightChildIndex(index);
@@ -67,8 +68,18 @@ public class MinimumHeap<T extends Comparable> extends Heap<T>{
 		
 		array[0]=array[count-1];
 		siftDown(0);
-		
+		count--;
 		return min;
+	}
+	
+
+	public boolean isEmpty() {
+		return count == 0;
+	}
+	
+	public boolean isFull() {
+		return count == array.length;
+		
 	}
 	
 	public static void main(String[] args) throws Exception {

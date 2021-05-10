@@ -13,7 +13,7 @@ public abstract class  Heap <T extends Comparable>{
 	}
 	
 	public Heap(Class<T> clazz, int size) {
-		array = (T[]) Array.newInstance(clazz, MAX_SIZE);
+		array = (T[]) Array.newInstance(clazz, size);
 	}	
 	
 	public int getLeftChildIndex(int index) {
@@ -52,6 +52,12 @@ public abstract class  Heap <T extends Comparable>{
 	
 	public int getCount() {
 		return count;
+	}
+	
+	public void printHeap() {
+		for (T element : array) {
+			System.out.print(element+",");
+		}
 	}
 	
 	
