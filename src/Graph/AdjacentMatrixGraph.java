@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Queue;
 
 
 
@@ -45,7 +46,6 @@ public class AdjacentMatrixGraph implements Graph{
 			}
 		List<Integer> adjacentVertices = new ArrayList<Integer>(); 
 		for (int i = 0; i < numVertices; i++) {
-			System.out.println(i);
 			if(adjacentMatrix[v][i] == 1) {
 				
 				adjacentVertices.add(i);
@@ -54,6 +54,26 @@ public class AdjacentMatrixGraph implements Graph{
 		
 		Collections.sort(adjacentVertices);
 		return adjacentVertices;
+	}
+	
+	public static void depthFirstTraverse(Graph graph, int [] visited , int currentVertice) throws Exception {
+		if(visited[currentVertice] == 1) {
+			return;
+		}
+		
+		visited[currentVertice] = 1;
+		List<Integer> adjacentList = graph.getAdjacentVertices(currentVertice);
+		for (int vertice : adjacentList) {
+			depthFirstTraverse(graph, visited, vertice);
+			
+		}
+		System.out.println(currentVertice+"->");
+	}
+	
+	public static void breadthFirstTraversal( Graph graph, int [] visited , int currentVertex) {
+		
+		
+		
 	}
 	
 	// 0-->1-->2
@@ -73,7 +93,9 @@ public class AdjacentMatrixGraph implements Graph{
 		
 		System.out.println(" Adjacent vertices of 1 :: "+adjMatrix.getAdjacentVertices(0));
 		
-		
+		System.out.println("Depth First traversal");
+		int [] visited = new int[10];
+		depthFirstTraverse(adjMatrix, visited, 0);
 
 	}
 
