@@ -75,6 +75,25 @@ public class AdjacentMatrixGraph implements Graph{
 		
 		
 	}
+	@Override
+	public int getIndegree(int v)throws Exception {
+		int indegree = 0;
+		if(v <0 || v>numVertices) {
+			throw new IllegalArgumentException("Invalid Vertix");
+		}
+		
+		for(int i = 0; i < numVertices; i ++) {
+			if(adjacentMatrix[i][v] != 0) {
+				indegree++;
+			}
+		}
+		return indegree;
+	}
+	
+	@Override
+	public int getNumberVertix() {
+		return numVertices;
+	}
 	
 	// 0-->1-->2
 	// |   |
